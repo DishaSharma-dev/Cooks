@@ -1,0 +1,77 @@
+<div class="container">
+
+
+
+    <div class="select-box ">
+        <div class="options-container ">
+            <div *ngFor="let city of cities " class="option ">
+                <input type="radio " class="radio " name="category ">
+                <label (click)="specificLocationCooks(city.lat, city.lon) ">{{city.name}}</label>
+            </div>
+        </div>
+        <div class="selected ">Banglore
+            <span><i class=" fas fa-caret-down "></i></span>
+        </div>
+        <div class="search-box ">
+            <input type="text " placeholder="Enter your Location ">
+        </div>
+    </div>
+</div>
+<div class="conatiner shadow-lg p-3 mb-5 bg-white rounded " id="table ">
+    <div class="row " style="justify-content: center; ">
+        <h2>List of Cooks</h2>
+    </div>
+    <table class="table table-striped table-responsive-lg ">
+        <thead>
+            <tr>
+                <th>CookId</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Gender</th>
+                <th>Experence</th>
+                <th>isNonVeg</th>
+                <th colspan="3 " style="text-align: center; ">Price Per Visit</th>
+            </tr>
+            <tr>
+                <th colspan="6 "></th>
+                <th>No of Visits.</th>
+                <th>Visits Price</th>
+                <th>Utensils Cleaning Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataSource ">
+                <td>
+                    {{item['cookId']}}
+                </td>
+
+                <td>
+                    {{item['firstName']}}
+                </td>
+
+                <td>
+                    {{item['lastName']}}
+                </td>
+                <td>
+                    {{item['gender']}}
+                </td>
+
+                <td>
+                    {{item['experience']}}
+                </td>
+
+                <td>
+                    {{item['nonVeg']}}
+                </td>
+                <td>
+                    {{item['pricePerVisits'][0]['noOfVisits']}}
+                </td>
+                <td>
+                    {{item['pricePerVisits'][0]['visitPrice']}}
+                </td>
+                <td>
+                    {{item['pricePerVisits'][0]['utensilsCleaningPrice']}}
+                </td>
+        </tbody>
+    </table>
+</div>
