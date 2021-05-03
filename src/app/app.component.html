@@ -1,21 +1,21 @@
 <div class="container">
 
-
-
-    <div class="select-box ">
-        <div class="options-container ">
-            <div *ngFor="let city of cities " class="option ">
-                <input type="radio " class="radio " name="category ">
-                <label (click)="specificLocationCooks(city.lat, city.lon) ">{{city.name}}</label>
-            </div>
-        </div>
-        <div class="selected ">Banglore
-            <span><i class=" fas fa-caret-down "></i></span>
-        </div>
-        <div class="search-box ">
-            <input type="text " placeholder="Enter your Location ">
-        </div>
-    </div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Select the location</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="cooksInformation(option)">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
 </div>
 <div class="conatiner shadow-lg p-3 mb-5 bg-white rounded " id="table ">
     <div class="row " style="justify-content: center; ">
